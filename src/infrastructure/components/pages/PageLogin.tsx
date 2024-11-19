@@ -8,7 +8,7 @@ export const PageLogin = () =>{
 const {loading} = useAuth()
 return(
 <>
-<div className=" relative flex justify-center items-center md:min-h-screen bg-gray-100"> 
+<div className=" relative flex justify-center items-center min-h-screen bg-gray-100"> 
 {
 loading && <Loading />}
 

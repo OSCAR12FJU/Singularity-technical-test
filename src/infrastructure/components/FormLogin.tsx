@@ -14,12 +14,9 @@ export const FormLogin = () =>{
         password: string;
     }
 
-    const {setLoading, emailError ,setEmailError} = useAuth()
+    const {setLoading, emailError ,setEmailError, setToken} = useAuth()
     console.log("estado del email",emailError)
     
-    const {token, setToken} = useAuth();
-    console.log(token)
-
     const [hasAttempted, setHasAttempted] = useState(false);
     const [userData, setuserData] = useState({
       email: '',
@@ -34,10 +31,12 @@ export const FormLogin = () =>{
       const makeLogin = await MakeLogin(userData.email, userData.password);
       console.log("log de makelogin",makeLogin);
       if (typeof makeLogin === "string"){
+        setHasAttempted(true);
         setEmailError(makeLogin);
         return
       }
       if(makeLogin.error){
+        setHasAttempted(true);
         setEmailError(makeLogin.error);
         return
       }
@@ -55,7 +54,7 @@ export const FormLogin = () =>{
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) =>{
+    const handleSubmit = async(e: React.FormEvent) =>{
         e.preventDefault();
 
         const user: UserItem = {
@@ -63,22 +62,25 @@ export const FormLogin = () =>{
             password: userData.password
         }
 
-
         setLoading(true);
     
-        setTimeout(() =>{
-        setUserLogin([...userLogin, user])
+       try{
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setUserLogin( [...userLogin, user])
+ 
+         setuserData({
+             email: '',
+             password: '',
+         })
+         setHasAttempted(false);
+         validate();
+       }catch(error){
+        console.error("Error during submission:", error);
+       } finally{
+         setLoading(false);
+       }
 
-        setuserData({
-            email: '',
-            password: '',
-        })
-        setHasAttempted(false);
-        validate();
-        setLoading(false);
-      },1000)
-
-    }
+    };
 
     const handleFocus = () => {
         setHasAttempted(false); 
@@ -105,7 +107,7 @@ export const FormLogin = () =>{
               required
             />
 
-            {hasAttempted && emailError && (
+            {hasAttempted && emailError.length > 0 && (
             <p className="mt-2 text-sm text-red-600">
               <span className="font-medium">Oops!</span> {emailError}
             </p>
@@ -126,7 +128,7 @@ export const FormLogin = () =>{
             />
 
           {/* {hasAttempted && passwordError && (
-            <p className="mt-2 text-sm text-red-600 ">
+            <p className="mt-2 text-sm text-red-600 dark:text-red-500">
               <span className="font-medium">Oops!</span> {passwordError}
             </p>
           )} */}
