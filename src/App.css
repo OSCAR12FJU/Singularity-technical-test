@@ -1,0 +1,7 @@
+.no-outline {
+  outline: none;
+}
+
+.clipPathFooter {
+  clip-path: circle();
+}
