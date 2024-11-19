@@ -43,7 +43,7 @@ export const OurServices = () =>{
         <HouseIcon className="mb-6"/>
     </ServicesItem>
     <ServicesItem text="Other Services">
-        <PawICon className="mb-6"/>
+        <PawICon className="mb-6" color="#00225c" opacity="0.3"/>
     </ServicesItem>
 
 </div>

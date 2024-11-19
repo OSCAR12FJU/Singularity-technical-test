@@ -3,40 +3,7 @@ import Chihuahua from "../files/Chihuahua.png";
 export const MakeFetch = () =>{
     return(
         <>
-        {/* <div className="relative flex justify-center items-center md:min-h-screen bg-[#F3F6FB] ">
-
-     <div className='md:py-8 px-4 w-full max-w-screen-lg lg:py-16'>
-
-  <div className="grid md:grid-cols-5 md:gap-0 mt-5 bg-[#4082FC]">
-
-  <div className="flex justify-center col-span-2 md:justify-start items-center  relative">
-  <div className='flex justify-start items-start p-4'>
-   <img src={Chihuahua} alt='LogoPet' className='object-cover w-full'/>
-  </div>
-  </div>
-
-  <div className='flex flex-col justify-center items-start text-start p-4 leading-normal col-span-3'>
-  <h2 className="mb-2 text-lg font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h2>
-        <p className="mb-3 font-normal text-gray-700 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-  </div>
-
-  </div>
-  </div>
- */}
-        {/* <div className="flex justify-center items-center bg-[#4082FC] border border-gray-200 max-w-screen mx-auto rounded-lg shadow flex-row">
-
-        <div className="flex justify-center items-center">
-        <img className="object-cover rounded-t-lg h-96  md:rounded-none md:rounded-s-lg" src={Chihuahua} alt="" />
-
-        </div>
-
-    <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Noteworthy technology acquisitions 2021</h5>
-        <p className="mb-3 font-normal text-gray-700">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    </div>
-    </div> */}
-        {/* </div> */}
-        <section className="py-32 flex justify-center items-center">
+   <section className="py-32 flex justify-center items-center">
 
   <div className="container">
     <div className="grid items-center gap-8 grid-cols-1 lg:grid-cols-3 lg:gap-2 bg-[#3F7FFA] py-8 md:py-6 rounded-[2rem] px-6 md:px-0">

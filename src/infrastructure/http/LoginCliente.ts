@@ -18,7 +18,6 @@ export const MakeLogin = async (email: string, password:string): Promise<LoginRe
   
       const data = await response.json();
       console.log(data);
-    //   const {setEmailError} = useAuth()
       if (response.ok) {
         return {token: data.token, error: null};
       } else {

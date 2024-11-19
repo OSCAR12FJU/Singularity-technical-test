@@ -2,6 +2,8 @@ import React from 'react';
 
 export interface IconProps {
   className?: string;
+  color?: string;
+  opacity?: string;
 }
 
 export const CatIcon: React.FC<IconProps> = ({ className = '' }) => (

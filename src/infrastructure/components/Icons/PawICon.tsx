@@ -1,7 +1,8 @@
 import React from 'react';
 import { IconProps } from './CatIcon';
 
-export const PawICon: React.FC<IconProps> = ({ className }) => {
+
+export const PawICon: React.FC<IconProps> = ({ className, color, opacity }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +13,8 @@ export const PawICon: React.FC<IconProps> = ({ className }) => {
     >
       <defs>
         <style>
-          {`.a { opacity: 0.3; isolation: isolate; }
-            .b { fill: #00225c; }`}
+          {`.a { opacity: ${opacity}; isolation: isolate; }
+            .b { fill: ${color}; }`}
         </style>
       </defs>
       <g className="a" transform="translate(-62.986 -17.357)">
