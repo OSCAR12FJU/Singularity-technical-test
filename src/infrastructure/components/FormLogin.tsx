@@ -20,8 +20,7 @@ export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
     // };
 
     const {setLoading, emailError ,setEmailError, setToken} = useAuth()
-    console.log("estado del email",emailError)
-    
+        
     const [hasAttempted, setHasAttempted] = useState(false);
     const [userData, setuserData] = useState({
       email: '',
@@ -91,7 +90,7 @@ export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
       };
 
     return(
-    <div className=' w-full md:w-2/3 px-4 py-5 mb-3 bg-white rounded-2xl shadow-lg md:shadow-none'>
+    <div className='max-w-5xl md:w-2/3 px-4 py-5 mb-3 bg-white rounded-2xl shadow-lg md:shadow-none'>
     <h2 className='text-xl font-bold text-[#1f2937] pl-4  border-l-8 border-[#FC6048]'>BIENVENIDO</h2>
     <form 
     onSubmit={handleSubmit}

@@ -1,7 +1,7 @@
 
 export const InsertCliente = async (email: string, password:string, name:string, lastname:string,nacionality:string) : Promise <{ message: string; user: { id: number; name: string; lastname: string; email: string; nacionality: string; password: string } }> =>{
     try {
-      const response = await fetch('https://backend-neverstop.onrender.com/api/users/register', {
+        const response = await fetch('https://backend-neverstop.onrender.com/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -17,6 +17,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
         repeatpassword:"",
     })
     const [errorPassword, setErrorPassword] = useState("")
+    const [errorEmail, setErrorEmail] = useState("")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         const {name,value} = e.target;
@@ -34,7 +35,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
         const {password, repeatpassword}= formData;
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if(type === "password" && !passwordRegex.test(value)){
-            setErrorPassword("La contraseña debe tener al menos 8 caracteres, incluir letras, números y un carácter especial.");
+            setErrorPassword("Mínimo 8 caracteres, letras, números y un especial");
             return
         }
         if (type === "repeatpassword" && value !== password) {
@@ -65,10 +66,8 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                 formData.name, 
                 formData.lastname,
                 formData.nacionality);
-            // await new Promise((resolve) => setTimeout(resolve, 1000));
-            // setUserLogin( [...userLogin, user])
             if(insertUser){
-                console.log('Usuario registrado exitosamente', insertUser.user);
+                console.log('Usuario registrado exitosamente');
             }
      
              setFormData({
@@ -80,15 +79,11 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                 repeatpassword:"",
              })
              closeModal()
-
-        //  setHasAttempted(false);
-        //  validate();
        }catch(error){
         console.error("Error during submission:", error);
+        setErrorEmail("El usuario ya existe")
+        
        } 
-    //    finally{
-    //      setLoading(false);
-    //    }
 
     };
 
@@ -105,7 +100,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                 <h3 className="text-xl font-semibold text-gray-900 ">
                  Registrarse
                 </h3>
-                <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" onClick={() => closeModal} >
+                <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" onClick={closeModal} >
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -113,8 +108,8 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                 </button>
             </div>
             <form  onSubmit={handleSubmit} className="p-4 md:p-5"  >
-                <div className="grid gap-4 mb-4 grid-cols-2 ">
-                    <div className="sm:col-span-2 md:col-span-1">
+                <div className="grid gap-2 md:gap-4 mb-4 grid-cols-2 ">
+                    <div className="col-span-2 md:col-span-1">
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 ">Nombre</label>
                         <input 
                         type="text"
@@ -126,7 +121,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                 
                          required />
                     </div>
-                    <div className="sm:col-span-2 md:col-span-1">
+                    <div className="col-span-2 md:col-span-1">
                         <label htmlFor="lastname" className="block mb-2 text-sm font-medium text-gray-900 ">Apellido</label>
                         <input 
                         type="text" 
@@ -138,7 +133,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
 
                         required/>
                     </div>
-                    <div className="sm:col-span-2 md:col-span-1">
+                    <div className="col-span-2 md:col-span-1">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
                         <input 
                         type="email" 
@@ -148,9 +143,12 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                         id="email" 
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " 
                         required/>
+                        {errorEmail && (
+                        <p className="mt-1 text-sm text-red-600">
+                            {errorEmail}</p>)}
                     
                     </div>
-                    <div className="sm:col-span-2 md:col-span-1">
+                    <div className="col-span-2 md:col-span-1">
                         <label htmlFor="nacionality" className="block mb-2 text-sm font-medium text-gray-900 ">Nacionalidad</label>
                         <input 
                         type="text" 
@@ -162,7 +160,7 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
 
                         required/>
                     </div>
-                    <div className="sm:col-span-2 md:col-span-1">
+                    <div className="col-span-2 md:col-span-1">
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Contraseña</label>
                         <input 
                         type="password" 
@@ -173,9 +171,10 @@ export const ModalNewUser: FC<ModalNewUserProps> = ({closeModal, className = ""}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " 
                         required/>
                          {formData.password !== formData.repeatpassword && (
-                        <p style={{ color: "red" }}>{errorPassword}</p>)}
+                        <p className="mt-1 text-sm text-red-600">
+                            {errorPassword}</p>)}
                     </div>
-                    <div className="sm:col-span-2 md:col-span-1 mb-4">
+                    <div className="col-span-2 md:col-span-1 mb-4">
                         <label htmlFor="repeatpassword" className="block mb-2 text-sm font-medium text-gray-900 ">Repetir Contraseña</label>
                         <input 
                         type="password" 
