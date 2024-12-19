@@ -8,7 +8,7 @@ export const CarrouselTest = () => {
   const cards = [
     { id: 0, color: "bg-[#FD6845]" },
     { id: 1, color: "bg-[#3D75EC]" },
-    { id: 2, color: "bg-[#FD6845]" },
+    { id: 2, color: "bg-[#FFE530]" },
   ];
 
   // Función para cambiar al siguiente slide
