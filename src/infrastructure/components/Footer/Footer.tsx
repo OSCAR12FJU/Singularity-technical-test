@@ -3,7 +3,7 @@ export const Footer = () =>{
         <>
 <footer className="bg-[#FF6752] px-4" >
     <div className="mx-auto w-full max-w-screen-xl">
-      <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 ">
         <div>
             <h2 className="mb-6 text-base font-bold text-[#FFE530] ">About</h2>
             <ul className="text-white font-normal">
