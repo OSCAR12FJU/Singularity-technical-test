@@ -7,7 +7,6 @@ export const MakeFetch = () =>{
 
   <div className="container">
     <div className="grid items-center gap-8 grid-cols-1 lg:grid-cols-3 lg:gap-2 bg-[#3F7FFA] py-8 md:py-6 rounded-[2rem] px-6 md:px-0">
-        
       <div className="col-span-1 flex justify-center items-center">
       <img src={Chihuahua} alt="placeholder hero"
         className="max-h-64 max-w-[22rem] md:max-h-96 w-full rounded-md object-cover" />

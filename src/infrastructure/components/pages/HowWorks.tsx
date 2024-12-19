@@ -4,7 +4,8 @@ import { ServicesItem } from "../ServicesItem"
 export const HowWorks = () =>{
 
     return(
-    <div className="grid grid-cols-1 bg-[#F3F6FB] md:grid-cols-5 gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-4  py-8 px-4 mx-auto max-w-screen-xl lg:py-16 md:gap-12">
+        
     <div className="py-8 col-span-3 order-2 md:order-1 max-w-screen-xl lg:py-16">
      <div className="flex flex-row gap-[10rem] justify-center items-center">
      <ServicesItem text="Reserve">

@@ -9,12 +9,11 @@ export const OurServices = () =>{
 
     return(
         <>
-<div className="relative flex justify-center items-center md:min-h-screen bg-[#F3F6FB]"> 
-
-<div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+<div className="relative flex justify-center items-center py-8"> 
+<div className="max-w-screen-xl">
 <div className="grid md:grid-cols-2 gap-8 md:gap-12">
 {/* -------------------- */}
-<div className="bg-white p-8 md:p-12 mb-8 text-start flex flex-col items-start">
+<div className="p-8 md:p-12 mb-8 text-start flex flex-col items-start">
     <h2 className="text-[#FD5D40] text-3xl md:text-5xl font-extrabold mb-8">Our Services</h2>
     <p className="text-lg font-normal text-gray-500 mb-6">National Brand With a Local Feel Experience the Fetch! Difference</p>
     <span className="text-[#FD5D40] font-bold mb-4">Enter Your Location and Fetch Our Services</span>

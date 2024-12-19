@@ -4,6 +4,7 @@ import { PrivateRoute } from './infrastructure/routes/PrivateRoute'
 import { Layout } from './infrastructure/components/pages/Layout'
 import { PageLogin } from './infrastructure/components/pages/PageLogin'
 import { Error } from './infrastructure/components/pages/Error'
+// import { CarrouselTest } from './infrastructure/components/CarrouselTest'
 
 function App() {
 

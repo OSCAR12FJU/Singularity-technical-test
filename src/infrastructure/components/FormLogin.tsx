@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import '../../App.css'
 // import { Loading } from './Loading';
 import { useAuth } from './SectionContext';
 import { MakeLogin } from '../http/LoginCliente';
 import { useNavigate } from 'react-router-dom';
 
-// interface Token{
-//   token:string;
-// }
-export const FormLogin = () =>{
+interface FormLoginProps {
+  closeModal: () => void;
+}
+export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
     interface UserItem{
         email: string;
         password: string;
     }
+
+    // const handleCloseModal = () => {
+
+    //   setIsModalOpen((prev) => !prev)
+    // };
 
     const {setLoading, emailError ,setEmailError, setToken} = useAuth()
     console.log("estado del email",emailError)
@@ -29,16 +34,15 @@ export const FormLogin = () =>{
     const validate = async() =>{
 
       const makeLogin = await MakeLogin(userData.email, userData.password);
-      console.log("log de makelogin",makeLogin);
       if (typeof makeLogin === "string"){
         setHasAttempted(true);
         setEmailError(makeLogin);
-        return
+        return;
       }
       if(makeLogin.error){
         setHasAttempted(true);
         setEmailError(makeLogin.error);
-        return
+        return;
       }
       setEmailError(" ");
       setToken(makeLogin.token);
@@ -86,10 +90,8 @@ export const FormLogin = () =>{
         setHasAttempted(false); 
       };
 
-
-
     return(
-    <div className='w-2/3'>
+    <div className=' w-full md:w-2/3 px-4 py-5 mb-3 bg-white rounded-2xl shadow-lg md:shadow-none'>
     <h2 className='text-xl font-bold text-[#1f2937] pl-4  border-l-8 border-[#FC6048]'>BIENVENIDO</h2>
     <form 
     onSubmit={handleSubmit}
@@ -150,7 +152,7 @@ export const FormLogin = () =>{
           </button>
           <div 
             className="text-sm font-medium text-center text-gray-400">
-             AÚN NO TENES CUENTA <a className="text-blue-600 cursor-pointer">REGISTRARSE</a>
+             AÚN NO TENES CUENTA <a className="text-blue-600 cursor-pointer" onClick={closeModal}>REGISTRARSE</a>
           </div>
         </form>
 
