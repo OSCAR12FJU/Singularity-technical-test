@@ -19,8 +19,7 @@ export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
     //   setIsModalOpen((prev) => !prev)
     // };
 
-    const {setLoading, emailError ,setEmailError, setToken} = useAuth()
-        
+    const {setLoading, emailError ,setEmailError, setToken} = useAuth()    
     const [hasAttempted, setHasAttempted] = useState(false);
     const [userData, setuserData] = useState({
       email: '',
@@ -59,6 +58,7 @@ export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
 
     const handleSubmit = async(e: React.FormEvent) =>{
         e.preventDefault();
+
         const user: UserItem = {
             email: userData.email,
             password: userData.password
@@ -67,6 +67,7 @@ export const FormLogin: FC<FormLoginProps> = ({closeModal}) =>{
         setLoading(true);
     
        try{
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setUserLogin( [...userLogin, user])
  
          setuserData({
